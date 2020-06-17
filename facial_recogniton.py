@@ -1,5 +1,5 @@
 import face_recognition
-import urllib
+import urllib3
 import numpy as np
 import cv2
 
@@ -44,7 +44,7 @@ def check_if_valid_face(img_url):
     valid_encoding = face_recognition.face_encodings(valid_user)[0]
 
     #Encoding the image from the web
-    resp = urllib.urlopen(img_url)
+    resp = urllib3.urlopen(img_url)
     image = np.asarray(bytearray(resp.read()),dtype="uint8")
     image = cv2.imdecode(image, cv2.IMREAD_COLOR)
     #Encodes unknown image
